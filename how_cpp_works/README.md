@@ -5,14 +5,15 @@
 
 ```c++
 std::cout << "hello world" << std::endl;
-``
+```
 <<： 重载运算符 是函数 相当于print  另一种含义为 将“hello world” 推送到cout流中，再将std::endl 推送进去
 
 当预处理语句处理完成后,文件将被编译  每一个项目被编译后都会生成一个obj文件(vs)，后面需要链接器将所有的obj文件进行链接起来
 经过链接之后，就会生可执行二进制文件exe
  
 
- ## 编译过程
+ ### 编译过程
+
  **首先遍历预处理语句并进行处理**  
  比如include 就是将后面的文件复制到当前文件处  
  define INTERGER int 就是将文件中所有的INTERFER进行替换成int
@@ -22,21 +23,22 @@ std::cout << "hello world" << std::endl;
  但是实际编译过程中，编译器会对机器码进行优化
 
 
- ## 链接器工作 build过程
+### 链接器工作 build过程
  
  所以报错分为 编译错误C和链接错误LNK
 
-``` c++
+```c++
 static int LOG(int a,int b)
 {
     get("hello");
     return a*b;
 }
 ```
+
 表示 LOG函数只会在这个文件中使用，链接器只在这个文件中进行链接，如果LOG没有被使用，那么LOG不会被链接，get函数也不会被链接，即使get函数不存在，也不会报错；只有当使用到LOG函数的时候，get函数才会通过LOG函数被链接起来；如果去掉static,在链接过程中无论 LOG函数有没有被使用，LOG函数都会被链接器与get函数链接起来
 
 
-``` c++
+```c++
 inline void LOG()
 {
     get(a,b);
